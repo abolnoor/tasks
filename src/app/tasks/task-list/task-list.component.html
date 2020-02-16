@@ -1,0 +1,9 @@
+<h2>Tasks</h2>
+<ul class="tasks">
+  <li *ngFor="let task of tasks$ | async"
+    [class.selected]="task.id === selectedId">
+    <a [routerLink]="['/task', task.id]">
+      {{ task.description }}
+    </a>
+  </li>
+</ul>
