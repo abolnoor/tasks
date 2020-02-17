@@ -1,0 +1,43 @@
+<h3>Create New Task</h3>
+<section>
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label>
+                Description:
+                <input type="text" formControlName="description" required>
+            </label>
+        </div>
+        <div>
+            <label>
+                Deadline:
+                <input type="date" formControlName="deadline">
+            </label>
+        </div>
+        <hr>
+        <div class="subtasks" formArrayName="sub_tasks">
+            <h4>SubTasks</h4>
+            <div class="subtask" *ngFor="let subTask of subTasks.controls; let i=index; let l = last;">
+                <!-- The repeated alias template -->
+                <label>
+                    <input type="text" [formControlName]="i" required>
+                </label>
+                <button type="button" class="rmv-btn" (click)="removeSubTask(i)">x</button>
+            </div>
+
+        </div>
+        <div >
+            <label>
+                SubTask
+                <input type="text" [formControl]="st">
+            </label>
+            <button type="button" (click)="addSubTask()" [disabled]="!st.valid">+</button>
+        </div>
+        <hr>
+
+        <button type="submit" [disabled]="!taskForm.valid">Submit</button>
+    </form>
+</section>
+
+<div *ngIf="newTask$ | async as ttt">
+{{ttt.description}}
+</div>

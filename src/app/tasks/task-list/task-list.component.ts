@@ -14,22 +14,16 @@ import { switchMap } from 'rxjs/operators';
 })
 export class TaskListComponent implements OnInit {
 
-  tasks$: Observable<Task[]>;
+  tasks$: Observable<any[]>;
   selectedId: number;
 
   constructor(private taskService: TaskService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    //this.taskService.getTasks();
-    //this.tasks$ = of(TasksData);
+    // this.taskService.getTasks();
+    // this.tasks$ = of(TasksData);
 
-     this.tasks$ = this.route.paramMap.pipe(
-      switchMap(params => {
-        // (+) before `params.get()` turns the string into a number
-        this.selectedId = +params.get('id');
-        return this.taskService.getTasks();
-      })
-    );
+     this.tasks$ = this.taskService.getTasks();
   }
 
 }

@@ -11,7 +11,7 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./task-detail.component.scss']
 })
 export class TaskDetailComponent implements OnInit {
-  task$: Observable<Task>;
+  task$: Observable<any>;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -21,7 +21,7 @@ export class TaskDetailComponent implements OnInit {
   ngOnInit(): void {
     this.task$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
-        this.taskService.getTask(params.get('id')))
+        this.taskService.getTask(+params.get('id')))
     );
   }
 

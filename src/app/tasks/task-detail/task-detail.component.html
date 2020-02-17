@@ -1,6 +1,23 @@
 <h2>Task: </h2>
 <div *ngIf="task$ | async as task">
   <h3>{{ task.description }}</h3>
+
+  <div class="dates">
+    <span class="cdate" > {{ task.created | date:'short' }} </span> <span> -> </span> <span class="cdate" > {{ task.deadline  | date}} </span>
+  </div>
+  <div class="categories">
+    <span class="category" *ngFor=" let cat of task.categories" [ngClass]="cat.color"> {{ cat.name }} </span>
+  </div>
+<hr>
+  <ul class="list">
+    <h4>Sub Tasks:</h4>
+    <li class="list-item" *ngFor="let subtask of task.sub_tasks">
+      {{subtask}}
+    </li>
+    </ul>
+    <hr>
+    
+
   
    
   
