@@ -1,30 +1,14 @@
 import { Task } from './task';
 
-export const TasksData: any[] = [
-
+export const TasksData: Task[] = [
     {
         id: 1,
         description: 'test task',
         sub_tasks: ['sub task1', 'sub task 2'],
         created: new Date().toDateString(),
         deadline: new Date().toDateString(),
-        categories: [
-            {
-                id: 1,
-                name: 'cat1',
-                color: 'blue'
-            },
-            {
-                id: 2,
-                name: 'cat2',
-                color: 'red'
-            },
-            {
-                id: 3,
-                name: 'cat3',
-                color: 'green'
-            }
-        ]
+        location: {latitude: 33.5090536, longitude: 36.2798887},
+        categories: [1, 2, 3]
     },
     {
         id: 2,
@@ -32,12 +16,7 @@ export const TasksData: any[] = [
         sub_tasks: ['sub task11', 'sub task 22'],
         created: new Date().toDateString(),
         deadline: new Date().toDateString(),
-        categories: [
-            {
-                id: 1,
-                name: 'cat1',
-                color: 'blue'
-            }
-        ]
+        location: {latitude: 33.5090536, longitude: 36.2798887},
+        categories: [1]
     }
 ];

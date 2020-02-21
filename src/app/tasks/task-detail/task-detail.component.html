@@ -1,12 +1,12 @@
 <h2>Task: </h2>
-<div *ngIf="task$ | async as task">
+<div *ngIf="task$ | async as task" class="task-detail">
   <h3>{{ task.description }}</h3>
 
   <div class="dates">
     <span class="cdate" > {{ task.created | date:'short' }} </span> <span> -> </span> <span class="cdate" > {{ task.deadline  | date}} </span>
   </div>
   <div class="categories">
-    <span class="category" *ngFor=" let cat of task.categories" [ngClass]="cat.color"> {{ cat.name }} </span>
+    <span class="category" *ngFor=" let cat of task.categories" [ngStyle]="{'background-color': cat.color}"> {{ cat.name }} </span>
   </div>
 <hr>
   <ul class="list">
@@ -18,7 +18,6 @@
     <hr>
     
 
-  
-   
-  
+    <div #mapElement id="map" style="width:100%;height:400px"></div>
+
 </div>

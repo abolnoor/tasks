@@ -368,7 +368,7 @@ nav a.active {
   .categories{
     display: flex;
     margin: 8px 0;
-
+    flex-wrap: wrap;
     .category {
         padding: 0 8px;
         margin: 0 4px;
@@ -376,7 +376,7 @@ nav a.active {
         border-radius: 50%;
     }
     
-    .category.blue{
+    /* .category.blue{
         background-color: lightblue;
     }
     .category.red{
@@ -384,7 +384,7 @@ nav a.active {
     }
     .category.green{
         background-color: lightgreen;
-    }
+    } */
     
 }
 

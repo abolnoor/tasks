@@ -18,7 +18,7 @@
       <span class="cdate" > {{ task.created | date:'short' }} </span> <span> -> </span> <span class="cdate" > {{ task.deadline  | date}} </span>
     </div>
     <div class="categories">
-      <span class="category" *ngFor=" let cat of task.categories" [ngClass]="cat.color"> {{ cat.name }} </span>
+      <span class="category" *ngFor=" let cat of task.categories" [ngStyle]="{'background-color': cat.color}"> {{ cat.name }} </span>
     </div>
   </li>
 </ul>

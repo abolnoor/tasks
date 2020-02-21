@@ -24,20 +24,27 @@
                 <button type="button" class="rmv-btn" (click)="removeSubTask(i)">x</button>
             </div>
 
-        </div>
-        <div >
-            <label>
-                SubTask
-                <input type="text" [formControl]="st">
-            </label>
-            <button type="button" (click)="addSubTask()" [disabled]="!st.valid">+</button>
+            <div>
+                <label>
+                    SubTask
+                    <input type="text" [formControl]="st">
+                </label>
+                <button type="button" (click)="addSubTask()" [disabled]="!st.valid">+</button>
+            </div>
         </div>
         <hr>
 
+        <div class="categories" formArrayName="categories">
+            <h4>Categories</h4>
+            <div class="category" *ngFor="let cat of cats; let i=index" [ngStyle]="{'background-color': cat.color}">
+                <input type="checkbox" [value]="cat.id" (change)="onCheckboxChange($event)">
+                {{cat.name}}
+            </div>
+        </div>
+        <hr>
+        <div #mapElement id="map" style="width:100%;height:400px"></div>
+        <hr>
+        
         <button type="submit" [disabled]="!taskForm.valid">Submit</button>
     </form>
 </section>
-
-<div *ngIf="newTask$ | async as ttt">
-{{ttt.description}}
-</div>

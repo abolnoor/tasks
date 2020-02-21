@@ -5,7 +5,7 @@ export const CategoriesData: Category[] = [
     {
         id: 1,
         name: 'cat1',
-        color: 'blue'
+        color: 'lightblue'
     },
     {
         id: 2,
@@ -15,6 +15,6 @@ export const CategoriesData: Category[] = [
     {
         id: 3,
         name: 'cat3',
-        color: 'green'
+        color: 'lightgreen'
     }
 ];

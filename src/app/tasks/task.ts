@@ -4,6 +4,6 @@ export interface Task {
     sub_tasks: string[];
     created: string;
     deadline: string;
-    categories: number[];
-    location: {latidute: number, longidute: number};
+    categories: any[];
+    location: {latitude: number, longitude: number};
 }
