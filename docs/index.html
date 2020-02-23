@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Tasks</title>
+  <base href="/tasks/">  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="manifest" href="/manifest.json">
+<link rel="stylesheet" href="styles.25036ccbd0e1587396df.css"></head>
+<body>
+  <app-root></app-root>
+  
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdq-VphAq43f15Zygo6aQw4du3Xv70YeY"
+    async defer></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-messaging.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAU60cb5PPzSUimUyBOq9BleKrWWPMmUzM",
+    authDomain: "tasks-268523.firebaseapp.com",
+    databaseURL: "https://tasks-268523.firebaseio.com",
+    projectId: "tasks-268523",
+    storageBucket: "tasks-268523.appspot.com",
+    messagingSenderId: "400415981464",
+    appId: "1:400415981464:web:55347677b94cb8651c75ed",
+    measurementId: "G-YWGE6NKVSQ"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  // Retrieve Firebase Messaging object.
+const messaging = firebase.messaging();
+
+messaging.requestPermission()
+.then(function() {
+  console.log("Have Permission");
+  return messaging.getToken();
+})
+.then(function(token) {
+  if (token) {
+    console.log('token: ', token);
+    localStorage.setItem('fcm_token', token);
+    /* sendTokenToServer(currentToken);
+    updateUIForPushEnabled(currentToken); */
+
+  } else {
+    // Show permission request.
+    console.log('No Instance ID token available. Request permission to generate one.');
+    // Show permission UI.
+   /*  updateUIForPushPermissionRequired();
+    setTokenSentToServer(false); */
+  }
+})
+.catch(function() {
+  console.log("Error");
+});
+messaging.onMessage(function(payload){
+  console.log("messaging", payload);
+  alert(payload.notification.title +'\n'+ payload.notification.body);
+});
+
+// Callback fired if Instance ID token is updated.
+messaging.onTokenRefresh(() => {
+  messaging.getToken().then((refreshedToken) => {
+    console.log('Token refreshed.');
+    localStorage.setItem('fcm_token', refreshedToken);
+    // Indicate that the new Instance ID token has not yet been sent to the
+    // app server.
+   // setTokenSentToServer(false);
+    // Send Instance ID token to app server.
+   // sendTokenToServer(refreshedToken);
+    // ...
+  }).catch((err) => {
+    localStorage.removeItem('fcm_token');
+    console.log('Unable to retrieve refreshed token ', err);
+   // showToken('Unable to retrieve refreshed token ', err);
+  });
+});
+</script>
+<script src="runtime-es2015.0811dcefd377500b5b1a.js" type="module"></script><script src="runtime-es5.0811dcefd377500b5b1a.js" nomodule defer></script><script src="polyfills-es5.abdd41dcd206a6689f72.js" nomodule defer></script><script src="polyfills-es2015.442fa3cc45520cc0d518.js" type="module"></script><script src="main-es2015.cd0edbeaf9e8b7c63db4.js" type="module"></script><script src="main-es5.cd0edbeaf9e8b7c63db4.js" nomodule defer></script></body>
+</html>
